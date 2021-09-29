@@ -15,6 +15,7 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
+      searchForEyeColor(people)
       // TODO: search by traits
       break;
       default:
@@ -83,8 +84,18 @@ function searchByName(people){
 }
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
-function searchByEyeColor(people){
+function searchForEyeColor(people){
+  let eyeColor = promptFor("What is the person's eye color?", autoValid);
 
+  let foundEyeColor = people.filter(function(potentialEyeColorMatch){
+    if(potentialEyeColorMatch.eyeColor === eyeColor){
+      return true;
+    }
+    else{
+      return false;
+   }
+})
+return foundEyeColor;
 }
 
 //TODO: add other trait filter functions here.
@@ -158,4 +169,4 @@ function customValidation(input){
   
 }
 
-//#endregion
+// #endregion
