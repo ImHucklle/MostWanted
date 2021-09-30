@@ -99,6 +99,7 @@ return foundEyeColor;
 }
 
 //TODO: add other trait filter functions here.
+// Trait Filter for Gender
 
 function searchByGender(people){
   let gender = promptFor("What is the person's gender?", autoValid);
@@ -114,6 +115,21 @@ function searchByGender(people){
 return foundGender;
 }
 
+// Trait Filter for occupation
+
+function searchByOccupation(people){
+  let occupation = promptFor("What is the person's occupation?", autoValid);
+
+  let foundOccupation = people.filter(function(potentialOccupationMatch){
+    if(potentialOccupationMatch.occupation === occupation){
+      return true;
+    }
+    else{
+      return false;
+   }
+})
+return foundOccupation;
+}
 
 
 //#endregion
