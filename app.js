@@ -41,7 +41,7 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-    // TODO: get person's info
+    //TODO 
     break;
     case "family":
     // TODO: get person's family
@@ -79,11 +79,12 @@ function searchByName(people){
       return false;
     }
   })
-  // TODO: find the person single person object using the name they entered.
-  return foundPerson;
+  // 
+  return (foundPerson)
 }
 
-//unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
+//Trait filter for Eye Color
+
 function searchForEyeColor(people){
   let eyeColor = promptFor("What is the person's eye color?", autoValid);
 
@@ -98,7 +99,6 @@ function searchForEyeColor(people){
 return foundEyeColor;
 }
 
-//TODO: add other trait filter functions here.
 // Trait Filter for Gender
 
 function searchByGender(people){
@@ -177,12 +177,26 @@ function displayPeople(people){
   }).join("\n"));
 }
 
+function displayEyeColor(people){
+  alert(people.map(function(person){
+    return person.eyeColor;
+  }).join("\n"));
+}
+
+//Prints all information for searched individual
 function displayPerson(person){
-  // print all of the information about a person:
-  // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
-  // TODO: finish getting the rest of the information to display.
+  personInfo += "id" + person.id + "\n";
+  personInfo += "Gender: " + person.gender + "\n";
+  personInfo += "D.O.B: " + person.dob + "\n";
+  personInfo += "Height: " + person.height + "\n";
+  personInfo += "Weight: " + person.weight + "\n";
+  personinfo += "Eye Color: " + person.eyeColor + "\n"
+  personInfo += "Occupation: " + person.occupation + "\n"
+  personInfo += "Parents: " + person.parents + "\n"
+  personInfo += "Current Spouse: " + person.currentSpouse + "\n"
+
   alert(personInfo);
 }
 
@@ -194,6 +208,7 @@ function displayPerson(person){
 //Functions to validate user input.
 /////////////////////////////////////////////////////////////////
 //#region 
+
 
 //a function that takes in a question to prompt, and a callback function to validate the user input.
 //response: Will capture the user input.
