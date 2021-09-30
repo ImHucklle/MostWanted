@@ -131,7 +131,23 @@ function searchByOccupation(people){
 return foundOccupation;
 }
 
-// Trait filter for Height
+//Trait Filter for Weight
+
+function searchByWeight(people){
+  let weight = promptFor("What is the person's weight?", autoValid);
+
+  let foundWeight = people.filter(function(potentialWeightMatch){
+    if(potentialWeightMatch.weight === weight){
+      return true;
+    }
+    else{
+      return false;
+   }
+})
+return foundWeight;
+}
+
+//Trait Filter for Height
 
 function searchByHeight(people){
   let height = promptFor("What is the person's height?", autoValid);
@@ -146,7 +162,6 @@ function searchByHeight(people){
 })
 return foundHeight;
 }
-
 
 //#endregion
 
