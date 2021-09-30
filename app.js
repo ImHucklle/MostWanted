@@ -131,6 +131,21 @@ function searchByOccupation(people){
 return foundOccupation;
 }
 
+//Trait Filter for Weight
+
+function searchByWeight(people){
+  let weight = promptFor("What is the person's weight?", autoValid);
+
+  let foundWeight = people.filter(function(potentialWeightMatch){
+    if(potentialWeightMatch.weight === weight){
+      return true;
+    }
+    else{
+      return false;
+   }
+})
+return foundWeight;
+}
 
 //#endregion
 
