@@ -8,23 +8,49 @@
 
 // app is the function called to start the entire application
 function app(people){
-  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
+  let searchType = promptFor('Enter 1 if you know the name of the person you are looking for, Enter 2 to look up by eyecolor. Enter 3 to lookup by gender. Enter 4 to lookup by occupation. Enter 5 to lookup by weight, Enter 6 to lookup by height.',autoValid)
+  let eyeResults;
+  let genderResults;
+  let occupationResults;
+  let weightResults;
+  let heightResults;
   let searchResults;
   switch(searchType){
-    case 'yes':
+    case '1':
       searchResults = searchByName(people);
       break;
-    case 'no':
-      searchForEyeColor(people)
-      // TODO: search by traits
+    case '2':
+      eyeResults = searchForEyeColor(people);
+      displayPeople(eyeResults);
       break;
+    case '3':  
+      genderResults = searchByGender(people);
+      displayPeople(genderResults);
+      break;
+    case '4':  
+      occupationResults = searchByOccupation(people);
+      displayPeople(occupationResults);
+      break;
+    case '5':  
+      weightResults = searchByWeight(people);
+      displayPeople(weightResults);
+      break;
+    case '6': 
+      heightResults = searchByHeight(people);
+      displayPeople(heightResults);
+      break;
+      // TODO: search by traits
       default:
     app(people); // restart app
       break;
   }
-  
+
+
+
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
+  
+
 }
 
 // Menu function to call once you find who you are looking for
@@ -36,6 +62,10 @@ function mainMenu(person, people){
     alert("Could not find that individual.");
     return app(people); // restart
   }
+
+
+
+
 
   let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
@@ -135,9 +165,9 @@ return foundOccupation;
 
 function searchByWeight(people){
   let weight = promptFor("What is the person's weight?", autoValid);
-
+  
   let foundWeight = people.filter(function(potentialWeightMatch){
-    if(potentialWeightMatch.weight === weight){
+    if(potentialWeightMatch.weight === parseInt(weight)){
       return true;
     }
     else{
@@ -151,9 +181,9 @@ return foundWeight;
 
 function searchByHeight(people){
   let height = promptFor("What is the person's height?", autoValid);
-
+  
   let foundHeight = people.filter(function(potentialHeightMatch){
-    if(potentialHeightMatch.height === height){
+    if(potentialHeightMatch.height === parseInt(height)){
       return true;
     }
     else{
@@ -176,6 +206,8 @@ function displayPeople(people){
     return person.firstName + " " + person.lastName;
   }).join("\n"));
 }
+
+
 
 function displayPerson(person){
   // print all of the information about a person:
