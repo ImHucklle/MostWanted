@@ -131,6 +131,22 @@ function searchByOccupation(people){
 return foundOccupation;
 }
 
+// Trait filter for Height
+
+function searchByHeight(people){
+  let height = promptFor("What is the person's height?", autoValid);
+
+  let foundHeight = people.filter(function(potentialHeightMatch){
+    if(potentialHeightMatch.height === height){
+      return true;
+    }
+    else{
+      return false;
+   }
+})
+return foundHeight;
+}
+
 
 //#endregion
 
