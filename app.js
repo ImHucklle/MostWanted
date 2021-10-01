@@ -8,43 +8,55 @@
 
 // app is the function called to start the entire application
 function app(people){
-  let searchType = promptFor('Enter 1 if you know the name of the person you are looking for, Enter 2 to look up by eyecolor. Enter 3 to lookup by gender. Enter 4 to lookup by occupation. Enter 5 to lookup by weight, Enter 6 to lookup by height.',autoValid)
-  let eyeResults;
-  let genderResults;
-  let occupationResults;
-  let weightResults;
-  let heightResults;
-  let searchResults;
+  //  let searchType = promptFor('Enter 1 if you know the name of the person you are looking for, Enter 2 to look up by eyecolor. Enter 3 to lookup by gender. Enter 4 to lookup by occupation. Enter 5 to lookup by weight, Enter 6 to lookup by height.',autoValid)
+  //  let eyeResults = searchForEyeColor(people);
+  //  let genderResults = searchByGender(people);
+  //  let occupationResults = searchByOccupation(people);
+  //  let weightResults = searchByWeight(people);
+  //  let heightResults = searchByHeight(people);
+  let searchResults = people
+
+  while (searchResults.length > 1) {
+    let searchType = promptFor('Enter 1 if you know the name of the person you are looking for, Enter 2 to look up by eyecolor. Enter 3 to lookup by gender. Enter 4 to lookup by occupation. Enter 5 to lookup by weight, Enter 6 to lookup by height.',autoValid)
+    
+    
+      
+ 
   switch(searchType){
     case '1':
       searchResults = searchByName(people);
       break;
     case '2':
-      eyeResults = searchForEyeColor(people);
-      displayPeople(eyeResults);
+      searchResults = searchForEyeColor(searchResults);
+      displayPeople(searchResults);
       break;
+      //return app(eyeResults);
     case '3':  
-      genderResults = searchByGender(people);
-      displayPeople(genderResults);
+      searchResults = searchByGender(searchResults);
+      displayPeople(searchResults);
       break;
+      //return app(genderResults);
     case '4':  
-      occupationResults = searchByOccupation(people);
-      displayPeople(occupationResults);
+      searchResults = searchByOccupation(searchResults);
+      displayPeople(searchResults);
       break;
+      //return app(occupationResults);
     case '5':  
-      weightResults = searchByWeight(people);
-      displayPeople(weightResults);
+      searchResults = searchByWeight(searchResults);
+      displayPeople(searchResults);
       break;
+      //return app(weightResults);
     case '6': 
-      heightResults = searchByHeight(people);
-      displayPeople(heightResults);
+      searchResults = searchByHeight(searchResults);
+      displayPeople(searchResults);
       break;
+      //return app(heightResults);
       // TODO: search by traits
       default:
     app(people); // restart app
       break;
   }
-
+}
 
 
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
@@ -58,7 +70,7 @@ function mainMenu(person, people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
-  if(!person){
+  if(person.length === 0){
     alert("Could not find that individual.");
     return app(people); // restart
   }
