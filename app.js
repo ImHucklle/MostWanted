@@ -77,6 +77,7 @@ function mainMenu(person, people){
     displayPerson(person)
     break;
     case "family":
+    displayFamily(person, people)
     // TODO: get person's family
     break;
     case "descendants":
@@ -226,6 +227,18 @@ function displayPerson(person){
   personInfo += "Current Spouse: " + person[0].currentSpouse + "\n"
   
   alert(personInfo);
+}
+
+function displayFamily(person, people){
+let currentSpouse = people.filter(function(currentSpouse){
+  if(person[0].currentSpouse === currentSpouse.id){
+    return true;
+  }
+  else{
+    return false;
+  }
+})
+alert(person[0].firstName + " " + person[0].lastName + " " + "is a spouse of" + " " + currentSpouse[0].firstName + " " + currentSpouse[0].lastName);
 }
 
 
