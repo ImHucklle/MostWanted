@@ -60,7 +60,7 @@ function mainMenu(person, people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
-  if(person.length <= 0){
+  if(person.length === 0){
     alert("Could not find that individual.");
     return app(people); // restart
   }
@@ -238,14 +238,14 @@ alert(person[0].firstName + " " + person[0].lastName + " " + "is a spouse of" + 
 
 function displayParents(person, people){
   let parents = people.filter(function(parents){
-    if(person[0].parents === parents.id){
+    if(person[0].parents >= parents[0].id){
       return true;
     }
     else{
       return false;
     }
   })
-  alert(person[0].firstName + " " + person[0].lastName + " " + "is related to" + " " + parents[0].firstName + " " + parents[0].lastName);
+  alert(person[0].firstName + " " + person[0].lastName + " " + "is related to" + " " + parents[0].firstName + " " + parents[0].lastName || parents[0].firstName + " " + parents[0].lastName);
   }
 
 //#endregion
